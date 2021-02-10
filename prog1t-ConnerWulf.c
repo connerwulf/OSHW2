@@ -1,4 +1,4 @@
-#define _REENTRANT
+
 #include <pthread.h>
 #include <stdio.h>
 #include <sys/types.h>
@@ -6,6 +6,7 @@
 #include <sys/time.h>
 #include <sys/resource.h>
 #include <stdlib.h>
+#define _REENTRANT
 /* Student: Conner Wulf. */
 /* compile with gcc -ofname thread-template.c -lpthread */
 /* Solve with mutex locks */
