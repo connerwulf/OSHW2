@@ -50,7 +50,7 @@ void * thread1(void *arg)
       pthread_mutex_unlock(&mutex);
      }
   }
-	printf("from process1 counter  =  %d, mytot %d, jumps %d \n", counter->value, mytot, jumps);
+	printf("from process1 counter  =  %d, mytot %d, jumps %d \n", line, mytot, jumps);
   return(NULL);
 }
 
@@ -77,7 +77,7 @@ void * thread2(void *arg)
          pthread_mutex_unlock(&mutex);
     }
    }
-	   printf("from process2 counter = %d\n", counter->value);
+	   printf("from process2 counter = %d\n", line);
 return(NULL);
 }
 
