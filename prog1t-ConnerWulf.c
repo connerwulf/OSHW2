@@ -34,8 +34,11 @@ void * thread1(void *arg)
 	int line = 0;
 	while (line < 2750000)
 	{
-    if(pthread_mutex_trylock(&mutex))
-    {
+    int flag = pthread_mutex_trylock(&mutex);
+    while(flag == 0){
+      flag = pthread_mutex_trylock(&mutex);
+    }
+    // {
 
 
       line++;
@@ -48,8 +51,8 @@ void * thread1(void *arg)
       counter->value = counter->value + 1;
 	    counter->value = counter->value * 2;
 	    counter->value = counter->value / 2;
-       pthread_mutex_unlock(&mutex);
-    }
+      pthread_mutex_unlock(&mutex);
+    // }
   }
 	printf("from process1 counter  =  %d, mytot %d, jumps %d \n", counter->value, mytot, jumps);
   return(NULL);
@@ -88,7 +91,7 @@ int main()
   int r=0;
 	int i;
   pthread_t	tid1[1];     /* process id for thread 1 */
-//  pthread_t	tid2[1];     /* process id for thread 2 */
+  pthread_t	tid2[1];     /* process id for thread 2 */
   //pthread_t	tid3[1];     /* process id for thread 2 */
   pthread_attr_t	attr[1];     /* attribute pointer array */
 
@@ -109,12 +112,12 @@ int main()
 
 /* Create the threads */
 
-  //pthread_create(&tid2[0], &attr[0], thread2, NULL);
+  pthread_create(&tid2[0], &attr[0], thread2, NULL);
   pthread_create(&tid1[0], &attr[0], thread1, NULL);
 
 
 /* Wait for the threads to finish */
-  //pthread_join(tid2[0], NULL);
+  pthread_join(tid2[0], NULL);
   pthread_join(tid1[0], NULL);
 
 
