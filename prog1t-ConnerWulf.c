@@ -1,4 +1,4 @@
-
+#define _REENTRANT
 #include <pthread.h>
 #include <stdio.h>
 #include <sys/types.h>
@@ -6,7 +6,7 @@
 #include <sys/time.h>
 #include <sys/resource.h>
 #include <stdlib.h>
-#define _REENTRANT
+
 /* Student: Conner Wulf. */
 /* compile with gcc -ofname thread-template.c -lpthread */
 /* Solve with mutex locks */
@@ -29,7 +29,7 @@ int mytot=0, jumps=0;
 * This function increases the value of shared variable "counter"
   by one 2750000 times
 ****************************************************************/
-void* thread1(void *arg)
+void * thread1(void *arg)
 {
 	int line = 0;
 	while (line < 2750000)
@@ -38,6 +38,7 @@ void* thread1(void *arg)
       if(counter->value % 100 == 0)
       {
         counter->value += 100;
+        jumps++;
       }
       counter->value = counter->value + 1;
 	    counter->value = counter->value * 2;
@@ -53,7 +54,7 @@ void* thread1(void *arg)
 This function increases the value of shared variable "counter"
 by one 275000 times
 ****************************************************************/
-void* thread2(void *arg)
+void * thread2(void *arg)
 {
 	int line = 0;
         int count;
@@ -107,7 +108,7 @@ int main()
 
 /* Wait for the threads to finish */
   pthread_join(tid2[0], NULL);
-  pthread_join(tid1[0], NULL);
+  //pthread_join(tid1[0], NULL);
 
 
 
