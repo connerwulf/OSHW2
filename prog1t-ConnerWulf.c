@@ -37,6 +37,7 @@ void * thread1(void *arg)
     int flag = pthread_mutex_trylock(&mutex);
     while(flag == 0){
       flag = pthread_mutex_trylock(&mutex);
+      printf("flag = %d", flag);
     }
     // {
 
