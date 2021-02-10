@@ -35,9 +35,9 @@ void * thread1(void *arg)
 	while (line < 2750000)
 	{
     int flag = pthread_mutex_trylock(&mutex);
-    while(flag == 0){
+    while(flag != 0){
       flag = pthread_mutex_trylock(&mutex);
-      printf("flag = %d", flag);
+      printf("flag = %d\n", flag);
     }
     // {
 
@@ -72,7 +72,7 @@ void * thread2(void *arg)
 	{
 
         int flag = pthread_mutex_trylock(&mutex);
-        while (flag == 0) {
+        while (flag != 0) {
           flag = pthread_mutex_trylock(&mutex);
         }
         line++;
