@@ -58,7 +58,7 @@ void * thread2(void *arg)
 {
 	int line = 0;
 
-	while (line < 2750000 && mtx == 0)
+	while (line < 2750000)
 	{
     int mtx = pthread_mutex_tryLock(&mutex);
     if (mtx == 0)
