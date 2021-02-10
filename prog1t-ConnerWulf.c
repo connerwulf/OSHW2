@@ -86,7 +86,7 @@ int main()
 {
   int r=0;
 	int i;
-  //pthread_t	tid1[1];     /* process id for thread 1 */
+  pthread_t	tid1[1];     /* process id for thread 1 */
   pthread_t	tid2[1];     /* process id for thread 2 */
   pthread_t	tid3[1];     /* process id for thread 2 */
   pthread_attr_t	attr[1];     /* attribute pointer array */
