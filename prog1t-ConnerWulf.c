@@ -41,8 +41,8 @@ void * thread1(void *arg)
       line++;
       if(counter->value % 100 == 0 && counter->value != 2750000)
       {
-        counter->value += 100;
-        line += 100;
+        counter->value = counter->value + 100;
+        line = line + 100;
         jumps++;
       }
       counter->value = counter->value + 1;
