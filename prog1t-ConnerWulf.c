@@ -66,8 +66,9 @@ void * thread2(void *arg)
 
 	while (line < 2750000)
 	{
-    line++;
-    pthread_mutex_lock(&mutex);
+
+        pthread_mutex_lock(&mutex);
+        line++;
         /* Critical Section */
 	       counter->value = counter->value + 1;
 	       counter->value = counter->value * 2;
