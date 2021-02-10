@@ -34,7 +34,7 @@ void * thread1(void *arg)
 	int line = 0;
 	while (line < 2750000)
 	{
-    if(pthread_mutex_trylock(&mutex))
+    if(pthread_mutex_trylock(mutex))
     {
 
 
@@ -47,7 +47,7 @@ void * thread1(void *arg)
       counter->value = counter->value + 1;
 	    counter->value = counter->value * 2;
 	    counter->value = counter->value / 2;
-       pthread_mutex_unlock(&mutex);
+       pthread_mutex_unlock(mutex);
     }
   }
 	printf("from process1 counter  =  %d, mytot %d, jumps %d \n", counter->value, mytot, jumps);
@@ -66,12 +66,12 @@ void * thread2(void *arg)
 	while (line < 2750000)
 	{
     line++;
-    pthread_mutex_lock(&mutex);
+    pthread_mutex_lock(mutex);
         /* Critical Section */
 	       counter->value = counter->value + 1;
 	       counter->value = counter->value * 2;
 	       counter->value = counter->value / 2;
-         pthread_mutex_unlock(&mutex);
+         pthread_mutex_unlock(mutex);
 
    }
 	   printf("from process2 counter = %d\n", counter->value);
