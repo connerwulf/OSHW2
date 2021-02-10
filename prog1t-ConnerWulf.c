@@ -70,7 +70,10 @@ void * thread2(void *arg)
 	while (line < 2750000)
 	{
 
-        pthread_mutex_lock(&mutex);
+        int flag = pthread_mutex_trylock(&mutex);
+        while (flag == 0) {
+          flag = pthread_mutex_trylock(&mutex);
+        }
         line++;
         /* Critical Section */
 	       counter->value = counter->value + 1;
