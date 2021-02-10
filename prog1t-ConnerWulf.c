@@ -58,17 +58,16 @@ void * thread2(void *arg)
 {
 	int line = 0;
         int count;
-	while (line < 2750000)
-	   {
-            line++;
-
+	while (line < 2750000 && pthread_mutex_tryLock(&mutex) == 0)
+	{
+      line++;
 	    count = 0;
 /* Critical Section */
-	    counter->value = counter->value + 1;
-	    counter->value = counter->value * 2;
-	    counter->value = counter->value / 2;
+	       counter->value = counter->value + 1;
+	       counter->value = counter->value * 2;
+	       counter->value = counter->value / 2;
 
-           }
+  }
 	   printf("from process2 counter = %d\n", counter->value);
 return(NULL);
 }
