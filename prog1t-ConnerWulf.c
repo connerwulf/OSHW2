@@ -34,7 +34,7 @@ void * thread1(void *arg)
 	int line = 0;
 	while (line < 2750000)
 	{
-    
+
       line++;
       if(counter->value % 100 == 0)
       {
@@ -61,11 +61,12 @@ void * thread2(void *arg)
 
 	while (line < 2750000)
 	{
+      line++;
     int mtx = pthread_mutex_trylock(&mutex);
     if (mtx == 0)
     {
 
-      line++;
+
 /* Critical Section */
 	       counter->value = counter->value + 1;
 	       counter->value = counter->value * 2;
