@@ -108,17 +108,17 @@ int main()
 
 /* Wait for the threads to finish */
   pthread_join(tid2[0], NULL);
-  //pthread_join(tid1[0], NULL);
+  pthread_join(tid1[0], NULL);
 
 
 
-	/*printf("from parent counter  =  %d\n", counter->value);
+	printf("from parent counter  =  %d\n", counter->value);
   getrusage(RUSAGE_SELF, &mytiming);
   printf("Time used is sec: %d, usec %d\n",mytiming.ru_utime.tv_sec,mytiming.ru_utime.tv_usec);
   printf("System Time used is sec: %d, usec %d\n",mytiming.ru_stime.tv_sec,mytiming.ru_stime.tv_usec);
 	printf("---------------------------------------------------------------------------\n");
 	printf("\t\t	End of simulation\n");
-*/
+
 	exit(0);
 
 }
