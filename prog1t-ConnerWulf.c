@@ -57,17 +57,22 @@ by one 275000 times
 void * thread2(void *arg)
 {
 	int line = 0;
-        int count;
-	while (line < 2750000 && int mtx = pthread_mutex_tryLock(&mutex) == 0)
+
+	while (line < 2750000 && mtx == 0)
 	{
+    int mtx = pthread_mutex_tryLock(&mutex);
+    while (mtx)
+    {
+
       line++;
 	    count = 0;
 /* Critical Section */
 	       counter->value = counter->value + 1;
 	       counter->value = counter->value * 2;
 	       counter->value = counter->value / 2;
-
-  }
+         pthread_mutex_unlock(&mutex);
+    }
+   }
 	   printf("from process2 counter = %d\n", counter->value);
 return(NULL);
 }
