@@ -61,11 +61,10 @@ void * thread2(void *arg)
 	while (line < 2750000 && mtx == 0)
 	{
     int mtx = pthread_mutex_tryLock(&mutex);
-    while (mtx)
+    if (mtx == 0)
     {
 
       line++;
-	    count = 0;
 /* Critical Section */
 	       counter->value = counter->value + 1;
 	       counter->value = counter->value * 2;
