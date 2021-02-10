@@ -86,7 +86,7 @@ int main()
 {
   int r=0;
 	int i;
-  pthread_t	tid1[1];     /* process id for thread 1 */
+  //pthread_t	tid1[1];     /* process id for thread 1 */
   pthread_t	tid2[1];     /* process id for thread 2 */
   pthread_t	tid3[1];     /* process id for thread 2 */
   pthread_attr_t	attr[1];     /* attribute pointer array */
@@ -109,12 +109,12 @@ int main()
 /* Create the threads */
 
   pthread_create(&tid2[0], &attr[0], thread2, NULL);
-  pthread_create(&tid1[0], &attr[0], thread1, NULL);
+//  pthread_create(&tid1[0], &attr[0], thread1, NULL);
 
 
 /* Wait for the threads to finish */
   pthread_join(tid2[0], NULL);
-  pthread_join(tid1[0], NULL);
+  //pthread_join(tid1[0], NULL);
 
 
 
