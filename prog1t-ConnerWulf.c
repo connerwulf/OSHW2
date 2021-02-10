@@ -6,7 +6,7 @@
 #include <sys/time.h>
 #include <sys/resource.h>
 #include <stdlib.h>
-/* Tested by LOH 2/1/21. */
+/* Student: Conner Wulf. */
 /* compile with gcc -ofname thread-template.c -lpthread */
 /* Solve with mutex locks */
 
@@ -28,19 +28,19 @@ int mytot=0, jumps=0;
 * This function increases the value of shared variable "counter"
   by one 2750000 times
 ****************************************************************/
-void * thread1(void *arg)
+void* thread1(void *arg)
 {
-	int line = 0;	
+	int line = 0;
 	while (line < 2750000)
 	   {
             line++;
 
 counter->value = counter->value + 1;
 	    counter->value = counter->value * 2;
-	    counter->value = counter->value / 2; 
+	    counter->value = counter->value / 2;
 
            }
-	printf("from process1 counter  =  %d, mytot %d, jumps %d \n", counter->value, mytot, jumps); 
+	printf("from process1 counter  =  %d, mytot %d, jumps %d \n", counter->value, mytot, jumps);
 return(NULL);
 }
 
@@ -49,9 +49,9 @@ return(NULL);
 This function increases the value of shared variable "counter"
 by one 275000 times
 ****************************************************************/
-void * thread2(void *arg)
+void* thread2(void *arg)
 {
-	int line = 0;	
+	int line = 0;
         int count;
 	while (line < 2750000)
 	   {
@@ -64,7 +64,7 @@ void * thread2(void *arg)
 	    counter->value = counter->value / 2;
 
            }
-	   printf("from process2 counter = %d\n", counter->value); 
+	   printf("from process2 counter = %d\n", counter->value);
 return(NULL);
 }
 
@@ -73,25 +73,25 @@ return(NULL);
 ****************************************************************/
 int main()
 {
-        int             r=0;
+  int  r=0;
 	int 		i;
-        pthread_t	tid1[1];     /* process id for thread 1 */
-        pthread_t	tid2[1];     /* process id for thread 2 */
-        pthread_t	tid3[1];     /* process id for thread 2 */
-        pthread_attr_t	attr[1];     /* attribute pointer array */
+  pthread_t	tid1[1];     /* process id for thread 1 */
+  pthread_t	tid2[1];     /* process id for thread 2 */
+  pthread_t	tid3[1];     /* process id for thread 2 */
+  pthread_attr_t	attr[1];     /* attribute pointer array */
 
 	pthread_mutex_init(&mutex,NULL);
-         counter = (struct shared_dat *) malloc(sizeof(struct shared_dat));
+  counter = (struct shared_dat *) malloc(sizeof(struct shared_dat));
 
 	/* initialize shared memory to 0 */
-	counter->value = 0 ;
-           printf("1 - I am here %d in pid %d\n",r,getpid());
-    
+	counter->value = 0;
+  printf("1 - I am here %d in pid %d\n",r,getpid());
+
 	fflush(stdout);
  /* Required to schedule thread independently.
  Otherwise use NULL in place of attr. */
         pthread_attr_init(&attr[0]);
-        pthread_attr_setscope(&attr[0], PTHREAD_SCOPE_SYSTEM);  /* system-wide contention */ 
+        pthread_attr_setscope(&attr[0], PTHREAD_SCOPE_SYSTEM);  /* system-wide contention */
 
 	/* end to schedule thread independently */
 
@@ -117,6 +117,5 @@ int main()
 		printf("\t\t	End of simulation\n");
 
 		exit(0);
-		
-}
 
+}
