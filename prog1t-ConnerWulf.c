@@ -72,7 +72,7 @@ void * thread2(void *arg)
 	       counter->value = counter->value * 2;
 	       counter->value = counter->value / 2;
          pthread_mutex_unlock(&mutex);
-    }
+    
    }
 	   printf("from process2 counter = %d\n", counter->value);
 return(NULL);
