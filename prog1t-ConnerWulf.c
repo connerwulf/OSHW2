@@ -8,9 +8,8 @@
 #include <stdlib.h>
 
 /* Student: Conner Wulf. */
-/* compile with gcc -ofname thread-template.c -lpthread */
-/* Solve with mutex locks */
 
+//Global Variables
 struct rusage mytiming;
 struct timeval mytimeval;
 
@@ -26,7 +25,7 @@ int jumps=0;
 
 /****************************************************************
 * This function increases the value of shared variable "counter"
-  by one 2750000 times
+  by one 2750000 times, and by 100 when count-> is a multiple of 100
 ****************************************************************/
 void * thread1(void *arg)
 {
@@ -43,7 +42,7 @@ void * thread1(void *arg)
 	    counter->value = counter->value * 2;
 	    counter->value = counter->value / 2;
 
-      if(counter->value % 100 == 0 && counter->value < 5500000 - 100)
+      if(counter->value % 100 == 0 && counter->value <= 5500000 - 100 && line <= 2750000)
       {
         counter->value = counter->value + 100;
         line = line + 100;
