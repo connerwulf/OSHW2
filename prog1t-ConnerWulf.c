@@ -69,16 +69,17 @@ void * thread2(void *arg)
 	while (line < 2750000)
 	{
 
-    int flag = pthread_mutex_trylock(&mutex);
-    if(flag == 0)
-    {
+    //int flag = pthread_mutex_trylock(&mutex);
+    // if(flag == 0)
+    pthread_mutex_lock(&mutex);
+    //{
       line++;
         /* Critical Section */
 	       counter->value = counter->value + 1;
 	       counter->value = counter->value * 2;
 	       counter->value = counter->value / 2;
          pthread_mutex_unlock(&mutex);
-    }
+  //}
 
    }
 	   printf("from process2 counter = %d\n", line);
