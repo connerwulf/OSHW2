@@ -51,7 +51,7 @@ void * thread1(void *arg)
      }
      else
      {
-       struct timespec ts = {0, 10000000L};
+       struct timespec ts = {0, 100000000L};
        nanosleep(&ts, NULL);
      }
   }
@@ -83,7 +83,7 @@ void * thread2(void *arg)
     }
     else
     {
-      struct timespec ts = {0, 10000000L};
+      struct timespec ts = {0, 100000000L};
       nanosleep(&ts, NULL);
     }
    }
