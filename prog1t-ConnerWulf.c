@@ -21,9 +21,8 @@ struct shared_dat
 
 struct shared_dat  *counter;
 int getpid();
-int temp;
 pthread_mutex_t mutex;
-int mytot=0, jumps=0;
+int jumps=0;
 
 /****************************************************************
 * This function increases the value of shared variable "counter"
@@ -35,7 +34,8 @@ void * thread1(void *arg)
 	while (line < 2750000)
 	{
     int flag = pthread_mutex_trylock(&mutex);
-    if(flag == 0){
+    if(flag == 0)
+    {
 
       line++;
       if(counter->value % 100 == 0 && counter->value != 2750000)
@@ -49,8 +49,12 @@ void * thread1(void *arg)
 	    counter->value = counter->value / 2;
       pthread_mutex_unlock(&mutex);
      }
+     else
+     {
+       usleep(1000);
+     }
   }
-	printf("from process1 counter  =  %d, mytot %d, jumps %d \n", line, mytot, jumps);
+	printf("from process1 counter  =  %d, jumps %d \n", line, jumps);
   return(NULL);
 }
 
@@ -75,6 +79,10 @@ void * thread2(void *arg)
 	       counter->value = counter->value * 2;
 	       counter->value = counter->value / 2;
          pthread_mutex_unlock(&mutex);
+    }
+    else
+    {
+      usleep(1000);
     }
    }
 	   printf("from process2 counter = %d\n", line);
