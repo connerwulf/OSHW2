@@ -33,10 +33,10 @@ void * thread1(void *arg)
 	int line = 0;
 	while (line < 2750000)
 	{
-    int flag = pthread_mutex_trylock(&mutex);
-    if(flag == 0)
-    {
-
+    //int flag = pthread_mutex_trylock(&mutex);
+    //if(flag == 0)
+    //{
+    pthread_mutex_lock(&mutex);
       line++;
 
       counter->value = counter->value + 1;
@@ -50,7 +50,7 @@ void * thread1(void *arg)
         jumps++;
       }
       pthread_mutex_unlock(&mutex);
-     }
+     //}
 
   }
 	printf("from process1 counter  =  %d, jumps %d \n", line, jumps);
