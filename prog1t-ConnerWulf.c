@@ -51,7 +51,8 @@ void * thread1(void *arg)
      }
      else
      {
-       usleep(1000);
+       struct timespec ts = {0, 1000000L};
+       nanosleep(&ts, NULL);
      }
   }
 	printf("from process1 counter  =  %d, jumps %d \n", line, jumps);
@@ -82,7 +83,8 @@ void * thread2(void *arg)
     }
     else
     {
-      usleep(1000);
+      struct timespec ts = {0, 1000000L};
+      nanosleep(&ts, NULL);
     }
    }
 	   printf("from process2 counter = %d\n", line);
