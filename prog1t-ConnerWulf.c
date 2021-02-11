@@ -38,22 +38,20 @@ void * thread1(void *arg)
     {
 
       line++;
+
+      counter->value = counter->value + 1;
+	    counter->value = counter->value * 2;
+	    counter->value = counter->value / 2;
+
       if(counter->value % 100 == 0 && counter->value != 2750000)
       {
         counter->value = counter->value + 100;
         line = line + 100;
         jumps++;
       }
-      counter->value = counter->value + 1;
-	    counter->value = counter->value * 2;
-	    counter->value = counter->value / 2;
       pthread_mutex_unlock(&mutex);
      }
-     else
-     {
-       struct timespec ts = {0, 100000000L};
-       nanosleep(&ts, NULL);
-     }
+
   }
 	printf("from process1 counter  =  %d, jumps %d \n", line, jumps);
   return(NULL);
@@ -81,11 +79,7 @@ void * thread2(void *arg)
 	       counter->value = counter->value / 2;
          pthread_mutex_unlock(&mutex);
     }
-    else
-    {
-      struct timespec ts = {0, 100000000L};
-      nanosleep(&ts, NULL);
-    }
+
    }
 	   printf("from process2 counter = %d\n", line);
 return(NULL);
