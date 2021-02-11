@@ -43,7 +43,7 @@ void * thread1(void *arg)
 	    counter->value = counter->value * 2;
 	    counter->value = counter->value / 2;
 
-      if(counter->value % 100 == 0 && counter->value <= 2749900)
+      if(counter->value % 100 == 0 && counter->value < 5500000 - 100)
       {
         counter->value = counter->value + 100;
         line = line + 100;
