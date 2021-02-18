@@ -34,7 +34,7 @@ void * thread1(void *arg)
 	while (line < 2750000)
 	{
 
-    temp = jump;
+    temp = jumps;
     line++;
     while(pthread_mutex_trylock != 0)
     {
