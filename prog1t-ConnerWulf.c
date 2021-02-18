@@ -56,7 +56,7 @@ void * thread1(void *arg)
 
 
 
-      if(jump > temp)
+      if(jumps > temp)
       {
         line += 100;
       }
