@@ -36,7 +36,7 @@ void * thread1(void *arg)
 
     temp = jumps;
     line++;
-    while(pthread_mutex_trylock != 0)
+    while(pthread_mutex_trylock(&mutex) != 0)
     {
       //Do nothing
     }
@@ -84,7 +84,7 @@ void * thread2(void *arg)
     //if(flag == 0)
     //{
         line++;
-        while(pthread_mutex_trylock != 0)
+        while(pthread_mutex_trylock(&mutex) != 0)
         {
 
         }
