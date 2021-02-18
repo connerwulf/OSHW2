@@ -52,7 +52,7 @@ void * thread1(void *arg)
      }
 
   }
-	printf("from process1 counter  =  %d, jumps %d \n", line, jumps);
+	printf("from process1 counter  =  %d, jumps %d \n", counter->value, jumps);
   return(NULL);
 }
 
@@ -80,7 +80,7 @@ void * thread2(void *arg)
     }
 
    }
-	   printf("from process2 counter = %d\n", line);
+	   printf("from process2 counter = %d\n", counter->value);
 return(NULL);
 }
 
